@@ -1,0 +1,27 @@
+<h1 class="text-center display-2 col-md-8 offset-md-2">THE TODOS LIST</h1>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 offset-md-3">
+      <a href="/todos/new" class="btn btn-primary mb-3 mt-5 float-right">Create New Todo</a>
+    </div>
+    <div class="col-md-6">
+      <ul class="list-group my-5 clear">
+        <% @todos.each do |todo| %>
+          <li class="list-group-item">
+            <%= todo.title %>
+            <div class="float-right">
+              <a href="/todos/<%= todo.id %>" class="btn btn-success btn-sm">View</a>            
+              <a href="/todos/<%= todo.id %>/edit" class="btn btn-info btn-sm">Edit</a>
+              <a href="/todos/<%= todo.id %>/delete" class="btn btn-danger btn-sm">Delete</a>
+            </div>
+            <% if todo.completed %>
+              <ion-icon name="checkmark" class="text-success mr-5 float-right"></ion-icon>
+            <% end %>
+            
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
