@@ -5,6 +5,7 @@ class TodosController < ApplicationController
   end
   
   def create
+    @todo = Todo.new
   end
 
   def show
@@ -16,7 +17,6 @@ class TodosController < ApplicationController
   end
   
   def store
-
     @todo = Todo.new
     @todo[:title] = params[:title]
     @todo[:description] = params[:desc]
@@ -28,7 +28,7 @@ class TodosController < ApplicationController
       redirect_to '/todos'
       flash[:success] = "todo successfully created!"
     else
-      flash[:danger] = "Error!"
+      render :create
     end
   end
 
@@ -50,7 +50,7 @@ class TodosController < ApplicationController
         redirect_to '/todos'
         flash[:success] = "todo successfully updated!"
       else
-        flash[:danger] = "Error!"
+        render :edit
       end
     end
   end

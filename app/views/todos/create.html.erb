@@ -5,11 +5,13 @@
       <%= form_tag("/todos/store", method: "post") do %>
       <div class="form-group">
       <%= label_tag("Title") %>
-      <%= text_field_tag(:title, nil, class: "form-control", required: "true")%>
+      <%= text_field_tag(:title, nil, class: "form-control")%>
+      <p class='error'><%= show_errors(@todo, :title) %></p>
       </div>
       <div class="form-group">
       <%= label_tag("Description") %>
-      <%= text_area_tag(:desc, nil, class: "form-control", required: "true") %>
+      <%= text_area_tag(:desc, nil, class: "form-control") %>
+      <p class='error'><%= show_errors(@todo, :description) %></p>
       </div>
       <div class="form-group">
       <%= label_tag("Completed") %>
