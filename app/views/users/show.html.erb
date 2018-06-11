@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center my-4">
+      <%= gravatar_for @user %>
+      <h1 class="text-center mt-3">
+        <%= @user.name %>
+      </h1>
+      <p class="text-center">
+      <%= @user.email %>
+      </p>
+    </div>
+  </div>
+</div>

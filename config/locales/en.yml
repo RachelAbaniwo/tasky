@@ -31,3 +31,14 @@
 
 en:
   hello: "Hello world"
+en:
+  activerecord:
+    attributes:
+      user:
+        password: "Password"
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              blank: "Please enter a password."

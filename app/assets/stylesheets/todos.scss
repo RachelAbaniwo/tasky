@@ -1,12 +1,28 @@
 // Place all the styles related to the todos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .error {
   color: #ff0000;
   font-size: 12px;
 }
 
 .field_with_errors input {
-  background-color: #ff0000;
+  color: #ff0000;
+  background-color: #ff00002e;
   border: 1px solid red !important;
 }
+
+
+/* @import "bootstrap.scss";
+.error {
+  color: #ff0000;
+  font-size: 12px;
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}*/
