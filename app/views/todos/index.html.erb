@@ -1,4 +1,29 @@
-<h1 class="text-center display-2 col-md-8 offset-md-2">THE TODOS LIST</h1>
+<nav class="navbar navbar-expand-lg navbar-light">
+  
+  <a class="navbar-brand" href="/todos">TODO APP</a>
+      <div class="container">
+        <ul>
+          <li class="nav-item dropdown">
+            <% if logged_in? %>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-item"><%= link_to "Profile", current_user %></li>
+                <div class="dropdown-divider"></div>
+                <li class="dropdown-item">
+                  <%= link_to "Log out", logout_path, method: :delete %>
+                </li>
+              </ul>
+            </li>
+            <% else %>
+              <li class="nav-item"><%= link_to "Log in", login_path %></li>
+              <li class="nav-item"><%= link_to "Register", signup_path %></li>
+            <% end %>
+        </ul>
+      </div>
+    </nav>
+<h1 class="text-center display-2 col-md-8 offset-md-2">HEY THERE!!!</h1>
 
 <div class="container">
   <div class="row justify-content-center">
