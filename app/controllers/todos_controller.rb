@@ -1,29 +1,34 @@
 class TodosController < ApplicationController
-  
+
+  before_action :logged_in_user
+  before_action :find_todo, only: [:show, :store_edit, :edit, :delete]
+  before_action :is_authorised, only: [:show, :store_edit, :edit, :delete]
+
+
   def index
-    @todos = Todo.all
+    @todos = @current_user.todos
   end
-  
+
   def create
     @todo = Todo.new
   end
 
   def show
-    @todo = Todo.find_by_id(params[:id])
     if !@todo
       redirect_to '/todos'
       flash[:danger] = "todo not found"
     end
   end
-  
+
   def store
     @todo = Todo.new
     @todo[:title] = params[:title]
     @todo[:description] = params[:desc]
     completed = params[:completed] == 'on'
     @todo[:completed] = completed
+    @todo[:user_id] = @current_user.id
 
-    @todo.save 
+
     if @todo.save
       redirect_to '/todos'
       flash[:success] = "todo successfully created!"
@@ -33,8 +38,6 @@ class TodosController < ApplicationController
   end
 
   def store_edit
-    @todo = Todo.find_by_id(params[:id])
-
     if !@todo
       redirect_to '/todos'
       flash[:danger] = "todo not found"
@@ -45,7 +48,7 @@ class TodosController < ApplicationController
       completed = params[:completed] == 'on'
       @todo[:completed] = completed
 
-      @todo.save 
+      @todo.save
       if @todo.save
         redirect_to '/todos'
         flash[:success] = "todo successfully updated!"
@@ -54,17 +57,15 @@ class TodosController < ApplicationController
       end
     end
   end
-  
-  def edit
-    @todo = Todo.find_by_id(params[:id])
 
+  def edit
     if !@todo
       redirect_to '/todos'
       flash[:danger] = "todo not found"
     end
 
   end
-  
+
   def delete
     @todo = Todo.find_by_id(params[:id])
 
@@ -82,4 +83,16 @@ class TodosController < ApplicationController
     end
   end
 
+  private
+    def find_todo
+      @todo = Todo.find_by_id(params[:id])
+    end
+
+    def is_authorised
+      if @todo.user_id != @current_user.id
+        flash[:danger] = "Unauthorised"
+        redirect_to todos_path
+      end
+
+    end
 end

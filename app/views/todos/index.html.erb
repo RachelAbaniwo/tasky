@@ -1,28 +1,3 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-  
-  <a class="navbar-brand" href="/todos">TODO APP</a>
-      <div class="container">
-        <ul>
-          <li class="nav-item dropdown">
-            <% if logged_in? %>
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Account <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-item"><%= link_to "Profile", current_user %></li>
-                <div class="dropdown-divider"></div>
-                <li class="dropdown-item">
-                  <%= link_to "Log out", logout_path, method: :delete %>
-                </li>
-              </ul>
-            </li>
-            <% else %>
-              <li class="nav-item"><%= link_to "Log in", login_path %></li>
-              <li class="nav-item"><%= link_to "Register", signup_path %></li>
-            <% end %>
-        </ul>
-      </div>
-    </nav>
 <h1 class="text-center display-2 col-md-8 offset-md-2">HEY THERE!!!</h1>
 
 <div class="container">
@@ -36,14 +11,14 @@
           <li class="list-group-item">
             <%= todo.title %>
             <div class="float-right">
-              <a href="/todos/<%= todo.id %>" class="btn btn-success btn-sm">View</a>            
+              <a href="/todos/<%= todo.id %>" class="btn btn-success btn-sm">View</a>
               <a href="/todos/<%= todo.id %>/edit" class="btn btn-info btn-sm">Edit</a>
               <a href="/todos/<%= todo.id %>/delete" class="btn btn-danger btn-sm">Delete</a>
             </div>
             <% if todo.completed %>
               <ion-icon name="checkmark" class="text-success mr-5 float-right"></ion-icon>
             <% end %>
-            
+
           </li>
         <% end %>
       </ul>

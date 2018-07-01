@@ -16,3 +16,10 @@
 
 
  @import "bootstrap";
+
+ .alert-toast {
+   z-index: 2;
+   position: absolute;
+   right: 0;
+   top: 3rem;
+ }
